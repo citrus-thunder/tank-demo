@@ -1,0 +1,150 @@
+[gd_scene load_steps=19 format=1]
+
+[ext_resource path="res://Sprites/Terrain/tileGrass1.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Terrain/tileGrass2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadCornerLL.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadCornerLR.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadCornerUL.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadCornerUR.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadCrossing.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadCrossingRound.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadEast.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadNorth.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadSplitE.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadSplitN.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadSplitS.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Terrain/tileGrass_roadSplitW.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Terrain/treeGreen_large.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Terrain/treeGreen_small.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 30 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 20 )
+
+[node name="Tileset" type="Node2D"]
+
+[node name="tileGrass1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 40, 40 )
+texture = ExtResource( 1 )
+
+[node name="tileGrass2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 110, 40 )
+texture = ExtResource( 2 )
+
+[node name="tileGrass_roadCornerLL" type="Sprite" parent="."]
+
+transform/pos = Vector2( 390, 40 )
+texture = ExtResource( 3 )
+
+[node name="tileGrass_roadCornerLR" type="Sprite" parent="."]
+
+transform/pos = Vector2( 460, 40 )
+texture = ExtResource( 4 )
+
+[node name="tileGrass_roadCornerUL" type="Sprite" parent="."]
+
+transform/pos = Vector2( 530, 40 )
+texture = ExtResource( 5 )
+
+[node name="tileGrass_roadCornerUR" type="Sprite" parent="."]
+
+transform/pos = Vector2( 320, 40 )
+texture = ExtResource( 6 )
+
+[node name="tileGrass_roadCrossing" type="Sprite" parent="."]
+
+transform/pos = Vector2( 180, 110 )
+texture = ExtResource( 7 )
+
+[node name="tileGrass_roadCrossingRound" type="Sprite" parent="."]
+
+transform/pos = Vector2( 250, 110 )
+texture = ExtResource( 8 )
+
+[node name="tileGrass_roadH" type="Sprite" parent="."]
+
+transform/pos = Vector2( 180, 40 )
+texture = ExtResource( 9 )
+
+[node name="tileGrass_roadV" type="Sprite" parent="."]
+
+transform/pos = Vector2( 250, 40 )
+texture = ExtResource( 10 )
+
+[node name="tileGrass_roadTE" type="Sprite" parent="."]
+
+transform/pos = Vector2( 530, 110 )
+texture = ExtResource( 11 )
+
+[node name="tileGrass_roadTN" type="Sprite" parent="."]
+
+transform/pos = Vector2( 390, 110 )
+texture = ExtResource( 12 )
+
+[node name="tileGrass_roadTS" type="Sprite" parent="."]
+
+transform/pos = Vector2( 320, 110 )
+texture = ExtResource( 13 )
+
+[node name="tileGrass_roadTW" type="Sprite" parent="."]
+
+transform/pos = Vector2( 460, 110 )
+texture = ExtResource( 14 )
+
+[node name="treeGreen_large" type="Sprite" parent="."]
+
+transform/pos = Vector2( 110, 110 )
+texture = ExtResource( 15 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="treeGreen_large"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="treeGreen_large/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="treeGreen_small" type="Sprite" parent="."]
+
+transform/pos = Vector2( 40, 110 )
+texture = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="treeGreen_small"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="treeGreen_small/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+

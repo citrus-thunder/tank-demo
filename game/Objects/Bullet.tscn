@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Objects/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Projectiles/bulletBlue1_outline.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 4.03904
+height = 5.88602
+
+[node name="Bullet" type="KinematicBody2D"]
+
+transform/pos = Vector2( 84.3531, 49.7962 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+speed = 35
+bounces = 2
+fuse = 5
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="Heading" type="Node2D" parent="."]
+
+transform/pos = Vector2( 0.265762, -23.969 )
+transform/scale = Vector2( 0.180629, 0.161971 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

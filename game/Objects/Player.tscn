@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Objects/PlayerMovement.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Tanks/tankBody_blue_outline.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Tanks/tankBlue_barrel1_outline.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.275, 18.4073 )
+
+[node name="Player" type="KinematicBody2D"]
+
+transform/rot = 180.0
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.121264, 0.222331 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+move_speed = 5
+rotate_speed = 1
+bullet = ExtResource( 2 )
+max_bullets = 2
+
+[node name="sprite_chassis" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+[node name="sprite_cannon" type="Sprite" parent="."]
+
+transform/pos = Vector2( -0.219269, -1.25967 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, 10 )
+
+[node name="bullet_spawn" type="Node2D" parent="sprite_cannon"]
+
+transform/pos = Vector2( -0.323922, 32.5811 )
+transform/scale = Vector2( 0.225493, 0.242551 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -0.121264, 0.222331 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Heading" type="Node2D" parent="."]
+
+transform/pos = Vector2( 0.0117798, -34.6323 )
+transform/scale = Vector2( 0.203771, 0.203749 )
+
+
