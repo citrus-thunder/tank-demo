@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://Objects/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Tanks/tankBody_red_outline.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Tanks/tankRed_barrel1_outline.png" type="Texture" id=4]
+[ext_resource path="res://Objects/targetscan.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 13.8136, 19.9099 )
+
+[node name="Enemy" type="KinematicBody2D"]
+
+transform/rot = 180.0
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+move_speed = 5
+rotate_speed = 1
+bullet = ExtResource( 2 )
+cooldown = 3
+
+[node name="sprite_chassis" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+[node name="sprite_cannon" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 12.4126 )
+texture = ExtResource( 4 )
+
+[node name="bullet_spawn" type="Node2D" parent="sprite_cannon"]
+
+transform/pos = Vector2( 0, 25.1129 )
+transform/scale = Vector2( 0.199888, 0.225064 )
+
+[node name="targetscan" type="RayCast2D" parent="sprite_cannon/bullet_spawn"]
+
+transform/pos = Vector2( -2.9273e-06, -27.0143 )
+transform/scale = Vector2( 5.00279, 4.44318 )
+enabled = false
+cast_to = Vector2( 0, 400 )
+layer_mask = 1
+type_mask = 15
+script/script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Heading" type="Node2D" parent="."]
+
+transform/pos = Vector2( 0, 39.3529 )
+transform/scale = Vector2( 0.215995, 0.227901 )
+
+[connection signal="player_targeted" from="sprite_cannon/bullet_spawn/targetscan" to="." method="_on_targetscan_player_targeted"]
+
+

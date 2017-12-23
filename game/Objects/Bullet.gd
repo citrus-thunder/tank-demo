@@ -32,7 +32,7 @@ func _fixed_process(delta):
 	if(is_colliding()):
 		var collider = get_collider()
 		var name = collider.get_name()
-		if(name=="Player" or name =="Enemy"): explode()
+		if(name=="Player" or collider.is_in_group("Enemies")): explode()
 		else: #bounce
 			if(current_bounces <= 0): explode()
 			current_bounces -= 1
